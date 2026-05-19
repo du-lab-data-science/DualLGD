@@ -1,0 +1,44 @@
+# General settings
+name: 'dev' # Warning: 'debug' and 'test' are reserved name that have a special behavior
+
+parent_dir: '.'
+
+wandb: 'online'             # online | offline | disabled
+wandb_name: 'duallgd'       # name of the wandb run
+gpus: 1                     
+
+decoder: null # path to pretrained decoder
+encoder: null # path to pretrained encoder
+
+resume: null
+resume_mode: state
+resume_override_optim: false
+test_only: null
+load_weights: null
+resume_preds_dir: null
+
+encoder_finetune_strategy: null  # null | freeze | ft-unfold | freeze-unfold | freeze-transformer | ft-transformer
+decoder_finetune_strategy: null  # null | freeze | ft-input | freeze-input | ft-transformer | freeze-transformer | ft-output 
+
+check_val_every_n_epochs: 1
+sample_every_val: 10
+val_samples_to_generate: 8
+val_sampling_max_batches: 3
+test_samples_to_generate: 100
+num_test_samples: 1000
+eval_sampling_parallel_samples: 8
+inference_sampling_method: ancestral     # ancestral | exact_long_range (ELRT)
+inference_sampling_schedule: full        # full | stride | num_steps | custom
+inference_sampling_step_stride: 1        # used when schedule=stride
+inference_sampling_num_steps: null       # used when schedule=num_steps; counts reverse transitions
+inference_sampling_custom_timesteps: null  # used when schedule=custom; endpoints 0 and T are auto-added
+log_every_steps: 500
+text_progress_log: True
+text_log_every_n_steps: 20
+text_log_val_every_n_batches: 1
+text_log_test_every_n_batches: 1
+text_log_val_sample_every: 1
+text_log_val_diffusion_every_steps: 100
+
+evaluate_all_checkpoints: False
+checkpoint_strategy: 'last'

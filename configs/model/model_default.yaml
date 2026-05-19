@@ -1,0 +1,59 @@
+# Model settings
+transition: 'marginal' 
+model: 'duallgd'          # 'duallgd' | 'graph_tf' | 'graph_tf_v2' | 'graph_tf_v3' | 'graph_tf_v4'
+backbone: 'duallgd'       # optional alias, set 'duallgd' to force DualLGD path
+diffusion_steps: 500
+diffusion_noise_schedule: 'cosine'         
+n_layers: 5
+
+extra_features: 'all'        # 'all', 'cycles', 'eigenvalues' or null
+
+hidden_mlp_dims: {'X': 256, 'E': 128, 'y': 2048}        
+
+hidden_dims : {'dx': 256, 'de': 64, 'dy': 1024, 'n_head': 8, 'dim_ffX': 256, 'dim_ffE': 128, 'dim_ffy': 1024}
+
+num_heads: 8
+dropout: 0.1
+attention_dropout: 0.1
+drop_path: 0.1
+strict_decoder_load: true
+
+duallgd:
+  use_primal_stream: true
+  use_dual_stream: true
+  use_cross_attention: true
+  cross_attention_mode: bidirectional    # 'bidirectional' | 'dual_to_primal' | 'primal_to_dual' | 'none'
+  cross_attention_use_incidence_mask: true
+  use_dual_linegraph_mask: true
+  edge_readout_source: dual              # 'dual' | 'primal'
+  use_linear_dual_attention: true
+  linear_attention_type: performer   # 'performer' | 'elu_plus_one'
+  performer_kernel: positive         # 'positive' | 'sincos'
+  performer_feature_type: orthogonal # 'orthogonal' | 'iid'
+  performer_num_features: 128
+  performer_redraw_on_forward: false
+  max_dense_dual_nodes: 4096
+  dynamic_dual_edge_from_primal: true
+  edge_diffusion_only: true
+  max_spd: 8
+  max_centrality: 16
+  primal_heads: 8
+  dual_heads: 8
+  cross_heads: 8
+
+encoder_hidden_dim: 256           # Small Model Default (CANOPUS)
+# encoder_hidden_dim: 512          # Large Model Default (MSG)
+
+encoder_magma_modulo: 512         # Small Model Default (CANOPUS)
+# encoder_magma_modulo: 2048       # Large Model Default (MSG)
+encoder_iterative_preds: 'growing'
+encoder_top_layers: 1
+encoder_refine_layers: 4
+encoder_spectra_dropout: 0.1
+encoder_form_embedder: 'pos-cos'
+encoder_peak_attn_layers: 2
+encoder_num_heads: 8
+encoder_pairwise_featurization: true
+encoder_embed_instrument: false
+
+lambda_train: [0, 1, 0]

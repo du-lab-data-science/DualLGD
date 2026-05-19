@@ -1,0 +1,10 @@
+name: fp2mol
+dataset: combined
+stats_dir: null
+remove_h: null
+datadir: 'data/fp2mol/'
+filter: False
+denoise_nodes: False
+morgan_nbits: 2048
+encoder_fp_names: ['morgan4096']
+morgan_r: 2
