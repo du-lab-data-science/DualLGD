@@ -6,7 +6,7 @@ Usage examples:
 
     # With adduct breakdown
     python compute_metrics.py --pred_dir ./outputs/2025-10-30/07-51-48-dev/preds --pred_prefix dev \
-        --by_adduct --labels data/mona_plus/labels.tsv --test_split data/mona_plus/splits/test.tsv
+        --by_adduct --labels data/canopus/labels.tsv --test_split data/canopus/splits/test.tsv
 
     # Full k range (1..100) and MCES
     python compute_metrics.py --pred_dir ./outputs/2025-10-30/07-51-48-dev/preds --pred_prefix dev \
@@ -14,7 +14,7 @@ Usage examples:
 
     # Custom output prefix and number of parallel jobs
     python compute_metrics.py --pred_dir ./outputs/2025-10-30/07-51-48-dev/preds --pred_prefix dev \
-        --output_prefix metrics_mona_plus --n_jobs 24
+        --output_prefix metrics_canopus --n_jobs 24
 """
 
 import argparse
@@ -1365,8 +1365,8 @@ def parse_args():
     p.add_argument("--full", action="store_true", help="Evaluate k=1..100 instead of k=1..10")
     p.add_argument("--n_jobs", type=int, default=-1, help="Number of parallel jobs (-1 = all CPUs)")
     p.add_argument("--by_adduct", action="store_true", help="Also compute per-adduct metrics")
-    p.add_argument("--labels", default="data/mona_plus/labels.tsv", help="Labels TSV path")
-    p.add_argument("--test_split", default="data/mona_plus/splits/test.tsv", help="Test split TSV path")
+    p.add_argument("--labels", default="data/canopus/labels.tsv", help="Labels TSV path")
+    p.add_argument("--test_split", default="data/canopus/splits/test.tsv", help="Test split TSV path")
     p.add_argument("--matching_method", default="inchi", choices=["inchi", "inchikey", "smiles"],
                    help="Matching method for accuracy (default: inchi, same as notebook)")
     p.add_argument(

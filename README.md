@@ -7,7 +7,7 @@ This is the implementation for **Unlocking High-Fidelity Molecular Generation fr
 We recommend Python 3.10. Install the required dependencies listed in `pyproject.toml` with your preferred Python environment manager.
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/du-lab-data-science/DualLGD.git
 cd DualLGD
 pip install -e .
 ```
@@ -61,6 +61,10 @@ MCES uses PuLP to call a MILP solver. The default `--mces_solver auto` is recomm
 python compute_metrics.py --pred_dir <pred_dir> --pred_prefix <prefix> --output_dir <output_dir> --mces --mces_solver auto
 python compute_metrics.py --pred_dir <pred_dir> --pred_prefix <prefix> --output_dir <output_dir> --mces --mces_solver HiGHS
 ```
+
+## Acknowledgements
+
+This codebase is adapted from [DiffMS](https://github.com/coleygroup/diffms).
 
 ## License
 
